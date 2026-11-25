@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacte | La Meua Web</title>
+  <meta name="description" content="Posa't en contacte amb La Meua Web.">
+  <link rel="canonical" href="https://gu1yem.github.io/contacte.html">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="index.html">La Meua Web</a>
+    <nav>
+      <a href="index.html">Inici</a>
+      <a href="sobre.html">Sobre nosaltres</a>
+      <a href="contacte.html" class="actiu">Contacte</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contacte</h1>
+    <p>Tens algun dubte? Escriu-nos i et respondrem prompte.</p>
+
+    <form id="form-contacte">
+      <label for="nom">Nom</label>
+      <input type="text" id="nom" name="nom" required>
+
+      <label for="email">Correu electrònic</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="missatge">Missatge</label>
+      <textarea id="missatge" name="missatge" rows="5" required></textarea>
+
+      <button type="submit" class="boto">Enviar</button>
+      <p id="resposta" style="margin-top:1rem;"></p>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 La Meua Web · <a href="sitemap.xml">Mapa del lloc</a></p>
+  </footer>
+
+  <script>
+    // Web estàtica: no s'envia res, però registrem l'enviament com a esdeveniment a GA4
+    document.getElementById('form-contacte').addEventListener('submit', function (e) {
+      e.preventDefault();
+      gtag('event', 'generate_lead', { form_id: 'form-contacte' });
+      document.getElementById('resposta').textContent = 'Gràcies! Hem rebut el teu missatge.';
+      this.reset();
+    });
+  </script>
+</body>
+</html>
